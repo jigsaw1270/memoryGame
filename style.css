@@ -9,7 +9,10 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: blueviolet;
+    background-color: rgb(243, 242, 245);
+    background-image: url('./images/sitebackground.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
 
 }
 
@@ -38,7 +41,8 @@ section{
 }
 
 .back{
-    background: white;
+  background-image: url('./images/card.jpeg');
+  background-size: cover;
     backface-visibility: hidden;
 }
 
@@ -172,4 +176,41 @@ section{
 .button-78:disabled {
   cursor: default;
   opacity: .24;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  section {
+      grid-template-columns: repeat(4, 6rem);
+      grid-template-rows: repeat(4, 6rem);
+      grid-gap: 1rem;
+  }
+
+  .button-78 {
+      font-size: 0.8rem;
+      padding: 8px 16px;
+  }
+
+  .card {
+      width: 6rem;
+      height: 6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+      grid-template-columns: repeat(4, 4rem);
+      grid-template-rows: repeat(4, 4rem);
+      grid-gap: 0.5rem;
+  }
+
+  .button-78 {
+      font-size: 0.6rem;
+      padding: 6px 12px;
+  }
+
+  .card {
+      width: 4rem;
+      height: 4rem;
+  }
 }

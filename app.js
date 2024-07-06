@@ -1,6 +1,6 @@
 const section  =  document.querySelector('section');
 const playerLivesCount = document.querySelector("span");
-let playerLives = 6;
+let playerLives = 9;
 
 //lik text
  playerLivesCount.textContent =  playerLives;
@@ -141,7 +141,7 @@ const getData = () => [
             section.style.pointerEvents = "all";
             }, 1000);
         });
-        playerLives = 6;
+        playerLives = 9;
         playerLivesCount.textContent= playerLives;
         setTimeout(()=> window.alert(text), 100);
     };
