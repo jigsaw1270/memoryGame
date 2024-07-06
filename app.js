@@ -14,7 +14,7 @@ const getData = () => [
     { imgSrc: "./images/fkatwigs.jpeg", id: 3, name: "fka twigs" },
     { imgSrc: "./images/fleetwood.jpeg", id: 4, name: "fleetwood" },
     { imgSrc: "./images/joy-division.jpeg", id: 5, name: "joy division" },
-    { imgSrc: "./images/ledzep.jpeg", id: 6, name: "lep zeppelin" },
+    { imgSrc: "./images/ledzep.jpeg", id: 14, name: "led zeppelin" },
     { imgSrc: "./images/metallica.jpeg", id: 7, name: "metallica" },
     { imgSrc: "./images/pinkfloyd.jpeg", id: 8, name: "pink floyd" },
     { imgSrc: "./images/beatles.jpeg", id: 9, name: "beatles" },
@@ -65,11 +65,18 @@ const getData = () => [
 
 
             card.addEventListener('click', (e)=> {
+                playSound('clickSound');
                 card.classList.toggle("toggleCard");
                 checkCards(e);
             })
         });
    
+    };
+
+    //sound
+    const playSound = (soundId) => {
+        const sound = document.getElementById(soundId);
+        sound.play();
     };
 
     //check cards 
@@ -83,6 +90,7 @@ const getData = () => [
         //logic
         if(flippedCards.length ===2){
             if(flippedCards[0].getAttribute('name')=== flippedCards[1].getAttribute('name')){
+                playSound('matchSound');
                 console.log("match");
                 flippedCards.forEach(card=>{
                     card.classList.remove("flipped");
@@ -97,7 +105,9 @@ const getData = () => [
                 playerLives--;
                 playerLivesCount.textContent = playerLives;
                 if(playerLives === 0){
+                    playSound('endSound');
                     restart("Damn , u lost  kid!!");
+                   
                 }
             }
         }
@@ -107,7 +117,9 @@ const getData = () => [
     //if we  won
 
     if(toggleCard.length === 16){
-        restart("congratulation , u just  beat the  game")
+        playSound('winSound');
+        restart("congratulation , u just  beat the  game");
+      
     }
         
     };
@@ -135,3 +147,18 @@ const getData = () => [
     };
 
     cardGenerator();
+
+
+    //music
+    const musicButton = document.getElementById('musicButton');
+const backgroundMusic = document.getElementById('backgroundMusic');
+
+musicButton.addEventListener('click', () => {
+    if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        musicButton.textContent = "🔇";
+    } else {
+        backgroundMusic.pause();
+        musicButton.textContent = "🔊";
+    }
+});
